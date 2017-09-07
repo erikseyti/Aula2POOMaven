@@ -44,8 +44,9 @@ public class Item {
 	}
 	
 	public double subTotal()
-	{
-		return 0.0;
+	{	
+		
+		return quantidade * valorVenda();
 	}
 	
 	
