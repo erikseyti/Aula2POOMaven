@@ -2,6 +2,9 @@ package br.edu.ifpr;
 
 public class Item {
 	
+	private static final double ISS = 0.025;
+	private static final double ICMS = 0.10;
+
 	enum Tipo {PRODUTO,SERVICO};
 	private String Descricao;
 	private int quantidade;
@@ -15,17 +18,29 @@ public class Item {
 	// criado usando o atalho do botão esquerdo do mouse/source/generate constructor using fields
 	public Item(String descricao, 
 			int quantidade, 
-			double custo, Tipo tipo) {
+			double custo,
+			double porcentagemLucro,
+			Tipo tipo) {
 		super();
 		Descricao = descricao;
 		this.quantidade = quantidade;
 		this.custo = custo;
+		this.porcentagemLucro =porcentagemLucro;
 		this.tipo = tipo;
 	}
 
 	public double valorVenda()
-	{
-		return 0.0;
+	{	
+		double custoComImposto =0;
+		if(tipo.equals(Item.Tipo.PRODUTO)){
+			custoComImposto = (custo*ICMS)+custo;
+		}
+		else
+		{
+			custoComImposto = (custo * ISS) + custo;
+		}
+		double valorVenda =(porcentagemLucro/100)* custoComImposto + custoComImposto;
+		return valorVenda;
 	}
 	
 	public double subTotal()
