@@ -17,7 +17,7 @@ public class Orcamento {
 	
 	public void remover(int indice)
 	{
-		System.out.println("hello");
+		//System.out.println("hello");
 	}
 
 	public double total()
