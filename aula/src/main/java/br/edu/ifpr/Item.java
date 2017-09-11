@@ -9,14 +9,10 @@ public class Item {
 
 	enum Tipo {PRODUTO, SERVICO};
 	
-	private String descricao;
-	
 	private int quantidade;
 	
-	private double custo;
-	
-	private double porcentagemLucro;
-	
+	private Produto produto = new Produto();
+
 	private Tipo tipo;
 
 	public Item(String descricao, 
@@ -24,23 +20,23 @@ public class Item {
 			double custo, 
 			double porcentagemLucro,
 			Tipo tipo) {
-		this.descricao = descricao;
+		this.produto.setDescricao(descricao);
 		this.quantidade = quantidade;
-		this.custo = custo;
-		this.porcentagemLucro = porcentagemLucro;
+		this.produto.setCusto(custo);
+		this.produto.setPorcentagemLucro(porcentagemLucro);
 		this.tipo = tipo;
 	}
 
 	public double valorVenda(){
 		double custoComImposto = 0;
 		if(tipo.equals(Item.Tipo.PRODUTO)){
-			custoComImposto = (custo * ICMS) + custo;	
+			custoComImposto = (produto.getCusto() * ICMS) + produto.getCusto();	
 		} else {
-			custoComImposto = (custo * ISS) + custo;
+			custoComImposto = (produto.getCusto() * ISS) + produto.getCusto();
 		}
 		
 		double valorVenda = 
-				((porcentagemLucro/100) * custoComImposto)
+				((produto.getPorcentagemLucro()/100) * custoComImposto)
 				+ custoComImposto;
 		return valorVenda;
 	}
