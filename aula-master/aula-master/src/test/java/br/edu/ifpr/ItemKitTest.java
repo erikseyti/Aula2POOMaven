@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 
 import org.junit.Test;
 
+
 public class ItemKitTest {
 
 	@Test
@@ -19,18 +20,27 @@ public class ItemKitTest {
 		kit.add(item1);
 		kit.add(item2);
 		
-		assertEquals(30.0, kit.valorVenda(),0);
-		verify(item1,times(1)).valorVenda();
-		verify(item2,times(1)).valorVenda();
+		assertEquals(30.0, kit.valorVenda(), 0);
+		
+		verify(item1, times(1)).valorVenda();
+		verify(item2, times(1)).valorVenda();
+		
 	}
 	
 	@Test
-	public void testSubtotal() {
+	public void testSubTotal(){
 		Item i1 = mock(Item.class);
-		when(i1.valorVenda()).thenReturn(25.0);
+		when(i1.subTotal()).thenReturn(25.0);
 		
 		Item i2 = mock(Item.class);
-		when(i2.valorVenda()).thenReturn(55.0);
+		when(i2.subTotal()).thenReturn(55.0);
+		
+		ItemKit kit = new ItemKit();
+		kit.add(i1);
+		kit.add(i2);
+		
+		assertEquals(80.0, kit.subTotal(), 0.0);
+		
 	}
 
 }
