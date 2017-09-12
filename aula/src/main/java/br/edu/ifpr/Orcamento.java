@@ -4,24 +4,21 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class Orcamento {
-	
+
+	private Collection<Item> itens = new ArrayList<>();
+
 	private double total;
-	private Collection<Item> itens = new ArrayList<Item>();
 	
-	
-	public void adicionar(Item item)
-	{
+	public void adicionar(Item item){
 		itens.add(item);
 		total += item.subTotal();
 	}
 	
-	public void remover(int indice)
-	{
-		//System.out.println("hello");
+	public void remover(int indice){
+		
 	}
 
-	public double total()
-	{
+	public double total() {
 		return total;
 	}
 }

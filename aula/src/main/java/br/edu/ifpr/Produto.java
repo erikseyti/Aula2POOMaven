@@ -5,6 +5,13 @@ public class Produto {
 	private double custo;
 	private double porcentagemLucro;
 
+	public Produto(String descricao, double custo, double porcentagemLucro) {
+		super();
+		this.descricao = descricao;
+		this.custo = custo;
+		this.porcentagemLucro = porcentagemLucro;
+	}
+
 	public Produto() {
 	}
 
