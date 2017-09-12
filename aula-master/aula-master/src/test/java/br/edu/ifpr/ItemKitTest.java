@@ -23,5 +23,14 @@ public class ItemKitTest {
 		verify(item1,times(1)).valorVenda();
 		verify(item2,times(1)).valorVenda();
 	}
+	
+	@Test
+	public void testSubtotal() {
+		Item i1 = mock(Item.class);
+		when(i1.valorVenda()).thenReturn(25.0);
+		
+		Item i2 = mock(Item.class);
+		when(i2.valorVenda()).thenReturn(55.0);
+	}
 
 }
